@@ -25,7 +25,7 @@ public class Main {
 
 	static FileWriter fw;
 
-	public static void stat(String jsonway1, String jsonway2, String csvway) {
+	public static void stat(String jsonway1, String jsonway2, String csvway, String filename) {
 
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -43,13 +43,13 @@ public class Main {
 		}
 
 		boolean egalite = json1.equals(json2);
-		System.out.println(egalite);
+		//System.out.println(egalite);
 
 		float similitude = (new Comparator()).compare(json1, json2);
-		System.out.println(similitude);
+		//System.out.println(similitude);
 
 		try {
-			fw.write(csvway);
+			fw.write(filename);
 			fw.write(DELIMITER);
 			fw.write(Boolean.toString(egalite));
 			fw.write(DELIMITER);
@@ -73,8 +73,8 @@ public class Main {
 			fw.write(HEADER);
 			fw.write(SEPARATOR);
 
-			for (int i = 1; i <= 2; i++) {
-				stat("json_java/json_" + i + ".json", "json_python/json_" + i + ".json", csvway);
+			for (int i = 1; i <= 8; i++) {
+				stat("json_java/json_" + i + ".json", "json_python/json_" + i + ".json", csvway, "json_" + i + ".json");
 			}
 
 			fw.close();
@@ -94,8 +94,8 @@ public class Main {
 			fw.write(HEADER);
 			fw.write(SEPARATOR);
 
-			for (int i = 1; i <= 2; i++) {
-				stat("json_java/json_" + i + ".json", "json_original/json_" + i + ".json", csvway);
+			for (int i = 1; i <= 8; i++) {
+				stat("json_java/json_" + i + ".json", "json_original/json_" + i + ".json", csvway, "json_" + i + ".json");
 			}
 
 			fw.close();
@@ -115,8 +115,8 @@ public class Main {
 			fw.write(HEADER);
 			fw.write(SEPARATOR);
 
-			for (int i = 1; i <= 2; i++) {
-				stat("json_python/json_" + i + ".json", "json_original/json_" + i + ".json", csvway);
+			for (int i = 1; i <= 8; i++) {
+				stat("json_python/json_" + i + ".json", "json_original/json_" + i + ".json", csvway, "json_" + i + ".json");
 			}
 
 			fw.close();
