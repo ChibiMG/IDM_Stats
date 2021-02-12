@@ -124,6 +124,29 @@ public class Main {
 		} catch (IOException e3) {
 			e3.printStackTrace();
 		}
+		
+		// Récupération des statistiques de comparaison des fichiers java et python algo 2
+
+				try {
+					
+					String csvway = "./json_csv/comparateur_java_python_algo2.csv";
+
+					fw = new FileWriter(csvway, true);
+
+					fw.write(HEADER);
+					fw.write(SEPARATOR);
+
+					for (int i = 1; i <= 8; i++) {
+						stat("json_java_algo2/json_" + i + ".json", "json_python_algo2/json_" + i + ".json", csvway, "json_" + i + ".json");
+					}
+
+					fw.close();
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+
+		
 	}
 
 }
